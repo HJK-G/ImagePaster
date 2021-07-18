@@ -1,24 +1,27 @@
-// Initialize button with user's preferred color
-let changeColor = document.getElementById("changeColor");
+let imgurl = document.getElementById("imgurl");
 
-chrome.storage.sync.get("color", ({ color }) => {
-  changeColor.style.backgroundColor = color;
-});
+// image should already be copied, paste will open the popup with the clipboard contents
+let pastedImage = document.getElementById("pastedImage");
 
-// When the button is clicked, inject setPageBackgroundColor into current page
-changeColor.addEventListener("click", async () => {
-    let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  
-    chrome.scripting.executeScript({
-      target: { tabId: tab.id },
-      function: setPageBackgroundColor,
+navigator.permissions.query({ name: "clipboard-read" }).then((result) => {
+  // If permission to read the clipboard is granted or if the user will
+  // be prompted to allow it, we proceed.
+  imgurl.textContent = result.state;
+
+  if (result.state == "granted" || result.state == "prompt") {
+    navigator.clipboard.read().then((data) => {
+      for (let i = 0; i < data.length; i++) {
+        if (!data[i].types.includes("image/png")) {
+          alert("Clipboard contains non-image data. Unable to access it.");
+        } else {
+          data[i].getType("image/png").then((blob) => {
+            imgElem.src = URL.createObjectURL(blob);
+          });
+        }
+      }
+      
+      imgurl.textContent = "asdf";
     });
+    imgurl.textContent = "idk";
+  }
 });
-  
-  // The body of this function will be executed as a content script inside the
-  // current page
-  function setPageBackgroundColor() {
-    chrome.storage.sync.get("color", ({ color }) => {
-      document.body.style.backgroundColor = color;
-    });
-}
