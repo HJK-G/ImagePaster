@@ -1,0 +1,1 @@
+navigator.permissions.query({ name: 'clipboard-read' });
