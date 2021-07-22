@@ -14,7 +14,7 @@ chrome.action.onClicked.addListener(function (tab) {
       },
       function (popup) {
         popupId = popup.id
-      },
+      }, 
     )
   }
   // There's currently a popup open
