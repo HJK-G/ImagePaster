@@ -6,7 +6,7 @@
   "background": {
     "service_worker": "background.js"
   },
-  "permissions": ["storage", "activeTab", "scripting", "clipboardRead", "clipboardWrite"],
+  "permissions": ["clipboardRead", "clipboardWrite"],
   "action": {
     "default_title": "Click me to get a url of your image",
     "default_icon": {
