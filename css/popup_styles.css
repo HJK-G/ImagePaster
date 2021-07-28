@@ -1,0 +1,31 @@
+.container {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  background-color: #ffffff;
+}
+
+.textcontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  background-color: #ffffff;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+a {
+  font-size: medium;
+}
+
+p {
+  font-size: large;
+}
