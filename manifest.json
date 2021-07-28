@@ -1,7 +1,7 @@
 {
   "name": "Image Paster",
   "description": "Uploads any image you paste to Imgur, so that you can use the url easier.",
-  "version": "1.0",
+  "version": "0.0.1",
   "manifest_version": 3,
   "background": {
     "service_worker": "background.js"
