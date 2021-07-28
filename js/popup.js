@@ -74,6 +74,7 @@ navigator.permissions.query({ name: 'clipboard-read' }).then((result) => {
         } else {
           data[i].getType('image/png').then((blob) => {
             console.log('Got an image')
+            imgurl.textContent = "Loading...";
             pastedImage.src = URL.createObjectURL(blob)
 
             console.log(blob)
